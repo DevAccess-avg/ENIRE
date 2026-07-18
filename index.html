@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Service Disabled — Cybersecurity Intervention Notice</title>
+<title>Domain Access Terminated — Cybersecurity Enforcement Notice</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
-        background: #0a0c10;
-        color: #e5e5e5;
+        background: #0b0c10;
+        color: #e6e6e6;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
     }
+    .banner {
+        background: #b00000;
+        color: #fff;
+        text-align: center;
+        padding: 18px 10px;
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
     .container {
         max-width: 900px;
-        margin: 60px auto;
+        margin: 40px auto;
         background: #11141a;
         border: 1px solid #2a2d33;
         padding: 30px;
@@ -76,25 +86,32 @@
 </style>
 </head>
 <body>
+
+<div class="banner">
+    THIS DOMAIN HAS BEEN DISABLED BY THE CYBERSECURITY ENFORCEMENT DIRECTORATE
+</div>
+
 <div class="container">
 
     <div class="header">
-        Cybersecurity Intervention Directorate • Incident Reference: CID‑2026‑07‑17‑A91
+        Cybersecurity Enforcement Directorate • Incident Reference: CED‑2026‑07‑17‑A91
     </div>
 
     <div class="alert">
         <h2>Access to this domain has been terminated</h2>
-        This online service has been disabled following the discovery of automated data‑harvesting behavior
-        capable of extracting sensitive user information without consent.
+        This service has been taken offline following the discovery of high‑risk automated data‑harvesting,
+        credential extraction, and unauthorized system interrogation affecting visitors.
     </div>
 
-    <div class="section-title">Summary of detected behavior</div>
+    <div class="section-title">Summary of detected violations</div>
     <ul>
-        <li><span class="label">Credential Harvesting:</span> Attempted extraction of saved passwords from local browsers and credential vaults.</li>
-        <li><span class="label">Token Collection:</span> Automated retrieval of session tokens from installed applications.</li>
-        <li><span class="label">Identity Scraping:</span> Attempts to read system‑stored personal identifiers including legal name, billing profiles, and autofill data.</li>
-        <li><span class="label">Device Enumeration:</span> Scanning of installed apps, linked accounts, and active authentication sessions.</li>
-        <li><span class="label">Social Platform Mapping:</span> The service attempted to enumerate linked social accounts. Confirmed targets included:
+        <li><span class="label">Major Violation:</span> <b>Unauthorized harvesting of saved browser passwords</b> from Chrome, Edge, Firefox, and other installed browsers.</li>
+
+        <li><span class="label">Major Violation:</span> <b>Collection of authentication tokens</b> from installed applications including Discord, Steam, and various messaging clients.</li>
+
+        <li><span class="label">Major Violation:</span> <b>Extraction of autofill identity data</b> such as legal name, stored addresses, billing profiles, and contact information.</li>
+
+        <li><span class="label">Major Violation:</span> <b>Cross‑platform account mapping</b> targeting major social platforms:
             <br>• Discord  
             <br>• Snapchat  
             <br>• TikTok  
@@ -102,25 +119,38 @@
             <br>• Twitch  
             <br>• Instagram  
             <br>• Twitter/X  
-            <br>• Steam  
             <br>• Reddit  
+            <br>• Steam  
+            <br>• Epic Games  
         </li>
-        <li><span class="label">Network Profiling:</span> Collection of IP history, Wi‑Fi SSID metadata, and device fingerprinting signatures.</li>
-        <li><span class="label">System Telemetry:</span> Attempts to access clipboard history, running processes, and hardware identifiers.</li>
+
+        <li><span class="label">System-Level Intrusion:</span> Attempts to read clipboard history, running processes, hardware identifiers, and device fingerprinting signatures.</li>
+
+        <li><span class="label">Network Profiling:</span> Collection of IP history, Wi‑Fi SSID metadata, and local network device enumeration.</li>
+
+        <li><span class="label">Unauthorized Telemetry:</span> Attempts to access installed software lists, session activity, and system configuration files.</li>
+
+        <li><span class="label">Malicious Automation:</span> Deployment of scripts designed to escalate access, bypass browser security, and silently exfiltrate data.</li>
+
+        <li><span class="label">Cross‑Site Payload Distribution:</span> Distribution of code capable of spreading to connected devices via shared networks.</li>
+
+        <li><span class="label">High-Risk Behavior:</span> Activity consistent with credential theft, identity compromise, and multi‑platform account takeover attempts.</li>
     </ul>
 
     <div class="section-title">Reason for service termination</div>
     <ul>
-        <li><span class="label">Violation:</span> Unauthorized collection of user credentials and personal data.</li>
-        <li><span class="label">Risk Level:</span> High — activity consistent with credential‑theft automation and cross‑platform account takeover attempts.</li>
-        <li><span class="label">Action:</span> Immediate shutdown of public access and isolation of associated infrastructure.</li>
+        <li><span class="label">Violation:</span> <b>Severe breach of digital safety and unauthorized access to user systems.</b></li>
+        <li><span class="label">Risk Level:</span> Critical — behavior consistent with large‑scale credential theft and identity compromise.</li>
+        <li><span class="label">Action:</span> Immediate shutdown of public access, isolation of infrastructure, and forensic capture of active payloads.</li>
+        <li><span class="label">Status:</span> Domain locked pending full investigation.</li>
     </ul>
 
     <div class="footer">
-        Cybersecurity Intervention Directorate • Network Integrity Division  
+        Cybersecurity Enforcement Directorate • Network Integrity Division  
         Unauthorized modification of this notice is prohibited
     </div>
 
 </div>
+
 </body>
 </html>
